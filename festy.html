@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FESTY GC · Billetterie 2026</title>
+
+    <!-- ========== FAVICON ========== -->
+    <link rel="icon" type="image/jpeg" sizes="32x32" href="https://i.ibb.co/zTB8gqQ8/logo.jpeg">
+    <link rel="icon" type="image/jpeg" sizes="16x16" href="https://i.ibb.co/zTB8gqQ8/logo.jpeg">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://i.ibb.co/zTB8gqQ8/logo.jpeg">
+    <link rel="shortcut icon" href="https://i.ibb.co/zTB8gqQ8/logo.jpeg">
+
+    <!-- ========== OPEN GRAPH ========== -->
+    <meta property="og:title" content="FESTY GC 2026 · Le rendez-vous des étudiants en Génie Civil">
+    <meta property="og:description" content="23 Mai 2026 au Restaurant Le Modon, Lokossa · Talk-Show, Concours d'Éloquence, DJ & Soirée dansante, Buffet gratuit · Pass unique 3.000 FCFA">
+    <meta property="og:image" content="https://i.ibb.co/nsZ0R4mX/partage.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:url" content="https://festygc.github.io/festy-gc-2026/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="FESTY GC">
+    <meta property="og:locale" content="fr_FR">
+
+    <!-- ========== TWITTER CARD ========== -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="FESTY GC 2026 · Le rendez-vous des étudiants en Génie Civil">
+    <meta name="twitter:description" content="23 Mai 2026 au Restaurant Le Modon, Lokossa · Talk-Show, Concours d'Éloquence, DJ & Soirée dansante, Buffet gratuit · Pass unique 3.000 FCFA">
+    <meta name="twitter:image" content="https://i.ibb.co/nsZ0R4mX/partage.jpg">
+
+    <!-- Polices Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet">
+    <!-- Icônes Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <!-- Bibliothèques -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script src="https://cdn.fedapay.com/checkout.js?v=1.1"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+
+    <style>
+        :root {
+            --gold: #E8B84B;
+            --gold-light: #F5D380;
+            --gold-dark: #C8962A;
+            --ink: #0D0B10;
+            --ink2: #1A1720;
+            --text-muted: #9B92A8;
+            --text-light: #B8B0C8;
+            --white: #FFFFFF;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: var(--ink);
+            font-family: 'DM Sans', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 80% 60% at 20% 0%, rgba(232,184,75,0.10) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 80% at 80% 100%, rgba(192,57,43,0.08) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ========== PAGE DE PRÉSENTATION ========== */
+        .presentation-page {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            flex-wrap: wrap;
+            gap: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .nav-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 2.2rem);
+            letter-spacing: 3px;
+            color: var(--white);
+            text-decoration: none;
+        }
+        .nav-logo span { color: var(--gold); }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--ink);
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .nav-cta:hover {
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(232,184,75,0.3);
+        }
+
+        .hero-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem 2rem 0;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: rgba(232,184,75,0.10);
+            border: 1px solid rgba(232,184,75,0.25);
+            color: var(--gold);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 10vw, 6rem);
+            line-height: 0.9;
+            color: var(--white);
+            letter-spacing: 4px;
+            margin-bottom: 0.5rem;
+            animation: fadeInUp 0.8s ease 0.1s both;
+        }
+        .hero-title span {
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--text-muted);
+            letter-spacing: 3px;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease 0.3s both;
+        }
+        .hero-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            padding: 0.7rem 1.2rem;
+            border-radius: 50px;
+        }
+        .hero-meta-item i { color: var(--gold); }
+
+        /* ========== SCROLL INFINI ========== */
+        .infinite-scroll-container {
+            width: 100%;
+            overflow: hidden;
+            padding: 0.5rem 0 1.5rem;
+            position: relative;
+            z-index: 2;
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+            mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+        }
+
+        .infinite-scroll-track {
+            display: flex;
+            width: max-content;
+            animation: scrollLeft 25s linear infinite;
+        }
+
+        .infinite-scroll-container.paused .infinite-scroll-track {
+            animation-play-state: paused;
+        }
+
+        .scroll-item {
+            flex-shrink: 0;
+            width: 200px;
+            height: 267px;
+            margin: 0 0.7rem;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid rgba(232,184,75,0.25);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.45);
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .scroll-item:hover {
+            transform: scale(1.04) translateY(-3px);
+            border-color: var(--gold);
+            box-shadow: 0 14px 35px rgba(232,184,75,0.25);
+        }
+
+        .scroll-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            pointer-events: none;
+            -webkit-user-drag: none;
+        }
+
+        @keyframes scrollLeft {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .hero-cta-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.5rem 2rem 2.5rem;
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 0.8s ease 0.5s both;
+        }
+
+        .hero-cta-large {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--ink);
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 700;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            padding: 1.3rem 3.5rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            box-shadow: 0 10px 35px rgba(232,184,75,0.3);
+        }
+        .hero-cta-large:hover {
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            transform: translateY(-4px);
+            box-shadow: 0 18px 45px rgba(232,184,75,0.45);
+        }
+        .hero-cta-sub {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+        }
+
+        .content-section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1rem 2rem 2rem;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-description {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-light);
+            max-width: 650px;
+            margin: 0 auto 3rem;
+            text-align: center;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+        .hero-description strong { color: var(--gold); }
+
+        .section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: var(--white);
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+        .section-title span { color: var(--gold); }
+
+        .section-underline {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-dark));
+            margin: 0 auto 2rem;
+            border-radius: 2px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .feature-card {
+            background: var(--ink2);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 1rem;
+            padding: 1.8rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .feature-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(232,184,75,0.3);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 4px; height: 100%;
+            background: linear-gradient(180deg, var(--gold), var(--gold-dark));
+            border-radius: 0 2px 2px 0;
+        }
+        .feature-icon {
+            width: 48px; height: 48px;
+            background: rgba(232,184,75,0.10);
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 1.2rem; color: var(--gold);
+        }
+        .feature-card h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.3rem; letter-spacing: 1px;
+            color: var(--white); margin-bottom: 0.7rem;
+        }
+        .feature-card p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
+
+        .timeline { position: relative; padding-left: 0; }
+        .timeline::before {
+            content: ''; position: absolute;
+            left: 6px; top: 0; bottom: 0; width: 2px;
+            background: linear-gradient(180deg, var(--gold), transparent);
+        }
+        .timeline-item { position: relative; margin-bottom: 2.5rem; padding-left: 2.5rem; }
+        .timeline-item::before {
+            content: ''; position: absolute;
+            left: 0; top: 4px;
+            width: 14px; height: 14px;
+            background: var(--gold); border-radius: 50%;
+            border: 3px solid var(--ink);
+            box-shadow: 0 0 10px rgba(232,184,75,0.4);
+        }
+        .timeline-item h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem; letter-spacing: 1px;
+            color: var(--white); margin-bottom: 0.3rem;
+        }
+        .timeline-item p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
+        .timeline-time { font-size: 0.7rem; color: var(--gold); letter-spacing: 2px; margin-bottom: 0.3rem; display: block; }
+
+        .cta-final-section {
+            text-align: center;
+            padding: 3rem 2rem 4rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-final-section .cta-description {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-final-btn {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--ink);
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 700;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            padding: 1.3rem 3.5rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            box-shadow: 0 10px 35px rgba(232,184,75,0.3);
+        }
+        .cta-final-btn:hover {
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            transform: translateY(-4px);
+            box-shadow: 0 18px 45px rgba(232,184,75,0.45);
+        }
+
+        .page-footer {
+            text-align: center;
+            padding: 2rem;
+            color: rgba(155,146,168,0.4);
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            border-top: 1px solid rgba(255,255,255,0.03);
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ========== RIDEAU ========== */
+        .theater-curtain { position: fixed; inset: 0; z-index: 9999; pointer-events: none; display: none; }
+        .curtain-rod {
+            position: absolute; top: 0; left: 0; right: 0; height: 15px;
+            background: linear-gradient(180deg, #4A4A4A 0%, #2A2A2A 40%, #1A1A1A 100%);
+            z-index: 10; box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+        }
+        .curtain-rod::before {
+            content: ''; position: absolute; top: -8px; left: 25px;
+            width: 30px; height: 30px;
+            background: radial-gradient(circle at 40% 35%, #E8C84B, #8B6914);
+            border-radius: 50%; box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        }
+        .curtain-rod::after {
+            content: ''; position: absolute; top: -8px; right: 25px;
+            width: 30px; height: 30px;
+            background: radial-gradient(circle at 40% 35%, #E8C84B, #8B6914);
+            border-radius: 50%; box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        }
+        .curtain-left {
+            position: absolute; top: 23px; left: 0; width: 52%; height: calc(100% - 23px);
+            background: linear-gradient(180deg, #9B1B1B 0%, #B22222 5%, #8B0000 15%, #A31515 25%, #7A0A0A 40%, #8B1A1A 55%, #6B0505 70%, #8B0000 85%, #7A1010 100%);
+            z-index: 5; transition: transform 0.9s cubic-bezier(0.77,0,0.18,1);
+            box-shadow: inset -15px 0 40px rgba(0,0,0,0.5);
+        }
+        .curtain-right {
+            position: absolute; top: 23px; right: 0; width: 52%; height: calc(100% - 23px);
+            background: linear-gradient(180deg, #9B1B1B 0%, #B22222 5%, #8B0000 15%, #A31515 25%, #7A0A0A 40%, #8B1A1A 55%, #6B0505 70%, #8B0000 85%, #7A1010 100%);
+            z-index: 5; transition: transform 0.9s cubic-bezier(0.77,0,0.18,1);
+            box-shadow: inset 15px 0 40px rgba(0,0,0,0.5);
+        }
+        .curtain-backdrop { position: absolute; top: 23px; left: 0; right: 0; bottom: 0; background: #F5F0E8; z-index: 1; }
+        .curtain-logo {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            z-index: 3; font-family: 'Bebas Neue', sans-serif; font-size: 3.5rem; color: var(--ink); opacity: 0.8;
+        }
+        .curtain-logo span { background: linear-gradient(135deg, var(--gold-dark), #8B6914); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .theater-curtain .curtain-left.open  { transform: translateX(-100%); }
+        .theater-curtain .curtain-right.open { transform: translateX(100%); }
+
+        /* ========== BILLETTERIE ========== */
+        .billetterie-page { display: none; position: relative; z-index: 1; min-height: 100vh; align-items: center; justify-content: center; padding: 1.5rem; }
+        .billetterie-page.active { display: flex; }
+        .page-wrap { width: 100%; max-width: 1050px; }
+
+        .site-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.8rem; flex-wrap: wrap; gap: 1rem; }
+        .site-logo { font-family: 'Bebas Neue', sans-serif; font-size: clamp(1.8rem, 4vw, 2.2rem); letter-spacing: 3px; color: var(--white); text-decoration: none; }
+        .site-logo span { color: var(--gold); }
+        .site-badge { background: rgba(232,184,75,0.12); border: 1px solid rgba(232,184,75,0.3); color: var(--gold); font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; padding: 0.4rem 1rem; border-radius: 40px; text-transform: uppercase; }
+        .back-btn { background: transparent; border: 1px solid rgba(255,255,255,0.15); color: var(--text-muted); font-family: 'DM Sans', sans-serif; font-size: 0.8rem; cursor: pointer; padding: 0.5rem 1rem; border-radius: 50px; display: flex; align-items: center; gap: 0.5rem; transition: all 0.3s; }
+        .back-btn:hover { color: var(--white); border-color: rgba(255,255,255,0.3); }
+
+        .main-card { background: var(--ink2); border-radius: 1.8rem; overflow: hidden; border: 1px solid rgba(255,255,255,0.06); box-shadow: 0 25px 50px rgba(0,0,0,0.5); display: flex; flex-direction: column; }
+
+        .panel-left { background: linear-gradient(160deg, #1F1829 0%, #0D0B10 100%); padding: 2rem 1.5rem; display: flex; flex-direction: column; align-items: flex-start; position: relative; overflow: hidden; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .panel-left::before { content: 'FESTY'; position: absolute; bottom: -1rem; right: -1rem; font-family: 'Bebas Neue', sans-serif; font-size: 8rem; color: rgba(232,184,75,0.04); }
+        .event-year { font-family: 'Bebas Neue', sans-serif; font-size: 0.85rem; letter-spacing: 4px; color: var(--gold); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
+        .event-year::before { content: ''; display: block; width: 24px; height: 1px; background: var(--gold); }
+        .event-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 8vw, 4.5rem); line-height: 0.9; color: var(--white); }
+        .event-subtitle { font-family: 'Bebas Neue', sans-serif; font-size: clamp(1.2rem, 4vw, 2rem); background: linear-gradient(135deg, var(--gold), var(--gold-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 4px; margin-bottom: 1.5rem; }
+        .event-meta { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.5rem; }
+        .event-meta-item { display: flex; align-items: center; gap: 0.6rem; font-size: 0.8rem; color: var(--text-muted); }
+        .event-meta-item i { color: var(--gold); width: 16px; text-align: center; }
+        .price-block { margin-top: auto; background: linear-gradient(135deg, rgba(232,184,75,0.15), rgba(232,184,75,0.05)); border: 1px solid rgba(232,184,75,0.25); border-radius: 1rem; padding: 1rem 1.2rem; width: 100%; }
+        .price-label { font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.3rem; }
+        .price-amount { font-family: 'Bebas Neue', sans-serif; font-size: clamp(1.8rem, 5vw, 2.8rem); color: var(--gold); }
+        .price-amount span { font-size: 1rem; color: var(--text-muted); }
+
+        .panel-right { padding: 2rem 1.5rem; background: var(--ink2); display: flex; flex-direction: column; justify-content: center; }
+        .step-header { margin-bottom: 1.5rem; text-align: center; }
+        .step-label { font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+        .step-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(1.5rem, 4vw, 1.8rem); color: var(--white); }
+        .form-field { margin-bottom: 1rem; }
+        .form-field label { display: block; font-size: 0.7rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.4rem; }
+        .form-field input { width: 100%; background: rgba(255,255,255,0.04); border: 1.5px solid rgba(255,255,255,0.1); border-radius: 0.7rem; padding: 0.8rem 1rem; color: var(--white); font-size: 0.9rem; }
+        .form-field input:focus { outline: none; border-color: var(--gold); background: rgba(232,184,75,0.05); }
+
+        .btn { font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 0.85rem; border: none; cursor: pointer; transition: all 0.25s ease; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; border-radius: 0.7rem; padding: 0.8rem 1.2rem; width: 100%; }
+        .btn-gold { background: linear-gradient(135deg, var(--gold), var(--gold-dark)); color: var(--ink); }
+        .btn-gold:hover:not(:disabled) { background: linear-gradient(135deg, var(--gold-light), var(--gold)); transform: translateY(-2px); }
+        .btn-gold:disabled { opacity: 0.6; cursor: not-allowed; }
+        .btn-ghost { background: transparent; color: var(--text-muted); border: 1.5px solid rgba(255,255,255,0.15); margin-top: 0.6rem; }
+        .btn-ghost:hover { color: var(--white); border-color: rgba(255,255,255,0.3); }
+        .btn-green { background: linear-gradient(135deg, #2ECC71, #1ABC9C); color: white; }
+        .btn-green:hover:not(:disabled) { transform: translateY(-2px); }
+        .btn-green:disabled { opacity: 0.6; cursor: not-allowed; }
+
+        .pay-info-box { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 0.9rem; padding: 1rem; margin-bottom: 1.2rem; }
+        .pay-info-box .row { display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 0.4rem; }
+        .pay-info-box .label { color: var(--text-muted); }
+        .pay-info-box .value { color: var(--white); font-weight: 600; }
+        .pay-info-box .total-label { color: var(--text-muted); font-weight: 700; }
+        .pay-info-box .total-value { color: var(--gold); font-weight: 700; font-size: 1rem; }
+        .divider { height: 1px; background: rgba(255,255,255,0.07); margin: 0.8rem 0; }
+        .step { animation: fadeUp 0.4s ease; width: 100%; }
+        .hidden { display: none !important; }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+        .security-row { display: flex; align-items: center; justify-content: center; gap: 0.8rem; margin-top: 1rem; flex-wrap: wrap; }
+        .security-badge { font-size: 0.6rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.4rem; }
+        .security-badge i { color: #2ECC71; font-size: 0.55rem; }
+
+        /* ===== TICKET ===== */
+        .ticket-outer { width: 100%; margin: 0 auto; }
+        .ticket-real {
+            width: 100%;
+            background-color: #0D0B10;
+            background-image: url('https://i.ibb.co/tT62YKrq/background-ticket.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border: 2px solid rgba(232,184,75,0.5);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(232,184,75,0.25), inset 0 0 40px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+        .ticket-real::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.45);
+            z-index: 1;
+        }
+        .ticket-real::after { content: ''; position: absolute; display: none; }
+        .ticket-left, .ticket-right { position: relative; z-index: 3; padding: 1rem 1.2rem; }
+        .ticket-left { width: 100%; border-bottom: 1px dashed rgba(232,184,75,0.4); }
+        .ticket-right { width: 100%; display: flex; align-items: center; justify-content: center; gap: 1rem; padding: 0.8rem 1.2rem; }
+        .ticket-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(1rem, 4vw, 1.4rem); color: var(--white); text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+        .ticket-holder { font-family: 'Bebas Neue', sans-serif; font-size: clamp(1rem, 4vw, 1.4rem); color: var(--gold); text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+        .ticket-download .ticket-title { font-family: 'Brush Script MT', 'Brush Script Std', cursive !important; font-size: 1.8rem !important; }
+        .ticket-download .ticket-holder { font-family: 'Brush Script MT', 'Brush Script Std', cursive !important; font-size: 1.6rem !important; }
+        .ticket-subtitle { font-size: 0.6rem; color: var(--text-muted); }
+        .ticket-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.25rem 0.8rem; font-size: 0.6rem; color: var(--text-muted); }
+        .ticket-info-grid strong { color: var(--white); font-weight: 600; }
+        .ticket-footer { font-size: 0.5rem; color: var(--text-muted); opacity: 0.8; }
+        #barcodeCanvas { max-width: 160px; width: 100%; height: auto; }
+
+        @media (min-width: 520px) {
+            .ticket-real { flex-direction: row; }
+            .ticket-real::after { display: block; top: 0; left: 68%; width: 2px; height: 100%; background: repeating-linear-gradient(to bottom, rgba(232,184,75,0.6) 0px, rgba(232,184,75,0.6) 8px, transparent 8px, transparent 14px); z-index: 2; opacity: 0.7; }
+            .ticket-left { width: 68%; border-bottom: none; }
+            .ticket-right { width: 32%; flex-direction: column; }
+            #barcodeCanvas { max-width: 100%; }
+        }
+
+        .ticket-action-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 1rem; }
+        .btn-outline-gold { background: transparent; border: 1.5px solid rgba(232,184,75,0.5); color: var(--gold); font-weight: 600; cursor: pointer; padding: 0.5rem 0.7rem; font-size: 0.7rem; border-radius: 0.5rem; }
+        .btn-outline-gold:hover { background: rgba(232,184,75,0.15); }
+
+        .success-note { background: rgba(46,204,113,0.08); border: 1px solid rgba(46,204,113,0.25); border-radius: 0.7rem; padding: 0.7rem 1rem; font-size: 0.75rem; color: #7DFFB8; margin-top: 1rem; text-align: center; }
+        .error-note { background: rgba(231,76,60,0.1); border: 1px solid rgba(231,76,60,0.3); border-radius: 0.7rem; padding: 1rem; color: #E74C3C; margin-top: 1rem; }
+        .error-support { font-size: 0.7rem; color: #F39C12; }
+        .error-support a { color: #F39C12; text-decoration: none; font-weight: 600; }
+
+        /* ===== CHATBOT ===== */
+        .chatbot-container { position: fixed; bottom: 20px; right: 20px; z-index: 100; font-family: 'DM Sans', sans-serif; display: none; }
+        .chatbot-container.visible { display: block; }
+
+        .chatbot-toggle {
+            width: 55px; height: 55px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 6px 25px rgba(232,184,75,0.35);
+            transition: all 0.3s ease;
+            font-size: 1.4rem; color: var(--ink);
+        }
+        .chatbot-toggle:hover { transform: scale(1.08); box-shadow: 0 10px 35px rgba(232,184,75,0.5); }
+
+        .chatbot-window {
+            display: none;
+            position: absolute; bottom: 70px; right: 0;
+            width: 320px; max-height: 450px;
+            background: var(--ink2);
+            border: 1px solid rgba(232,184,75,0.3);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+            flex-direction: column;
+        }
+        .chatbot-window.open { display: flex; }
+
+        .chatbot-header {
+            background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+            color: var(--ink);
+            padding: 0.8rem 1rem;
+            font-weight: 700; font-size: 0.85rem;
+            display: flex; align-items: center; gap: 0.6rem;
+        }
+
+        .chatbot-messages {
+            flex: 1; padding: 1rem;
+            overflow-y: auto;
+            display: flex; flex-direction: column; gap: 0.8rem;
+            max-height: 300px;
+            background: var(--ink);
+        }
+        .chatbot-msg {
+            padding: 0.6rem 0.9rem; border-radius: 1rem;
+            font-size: 0.8rem; line-height: 1.5; max-width: 85%;
+            animation: msgIn 0.3s ease;
+        }
+        @keyframes msgIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .chatbot-msg.bot { background: rgba(232,184,75,0.12); color: var(--white); align-self: flex-start; border-bottom-left-radius: 4px; }
+        .chatbot-msg.user { background: var(--gold); color: var(--ink); align-self: flex-end; border-bottom-right-radius: 4px; }
+
+        .chatbot-input-area {
+            display: flex; padding: 0.6rem; gap: 0.5rem;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            background: var(--ink2);
+        }
+        .chatbot-input-area input {
+            flex: 1;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 0.5rem;
+            padding: 0.6rem 0.8rem;
+            color: var(--white);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.8rem;
+        }
+        .chatbot-input-area button {
+            background: var(--gold); color: var(--ink);
+            border: none; border-radius: 0.5rem;
+            padding: 0.6rem 0.9rem;
+            cursor: pointer; font-weight: 700; font-size: 0.8rem;
+        }
+
+        .chatbot-suggestions {
+            display: flex; flex-wrap: wrap; gap: 0.4rem;
+            padding: 0.5rem 1rem 0.8rem;
+        }
+        .chatbot-suggestion {
+            background: rgba(232,184,75,0.1);
+            border: 1px solid rgba(232,184,75,0.2);
+            color: var(--gold);
+            font-size: 0.7rem; padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .chatbot-suggestion:hover { background: rgba(232,184,75,0.2); border-color: var(--gold); }
+
+        .loading-overlay { position: fixed; inset: 0; background: rgba(13,11,16,0.97); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 1000; }
+        .loading-spinner { width: 60px; height: 60px; border: 3px solid rgba(232,184,75,0.2); border-top: 3px solid var(--gold); border-radius: 50%; animation: spin 0.8s linear infinite; margin-bottom: 1.5rem; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .loading-text { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; color: var(--gold); }
+        .loading-progress { width: 200px; height: 3px; background: rgba(255,255,255,0.1); border-radius: 2px; margin-top: 1rem; overflow: hidden; }
+        .loading-progress-bar { height: 100%; background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-light)); animation: progress 3s ease-in-out; }
+        @keyframes progress { 0% { width: 0; } 100% { width: 100%; } }
+
+        @media (min-width: 768px) {
+            .main-card { flex-direction: row; }
+            .panel-left { width: 42%; border-bottom: none; border-right: 1px solid rgba(255,255,255,0.05); padding: 2.5rem 2rem; }
+            .panel-right { width: 58%; padding: 2.5rem 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== PAGE DE PRÉSENTATION ========== -->
+    <div class="presentation-page" id="presentationPage">
+        <nav class="nav-bar">
+            <a href="#" class="nav-logo">FESTY<span>GC</span></a>
+            <button class="nav-cta" id="openBilletterieBtn">
+                <i class="fas fa-ticket-alt"></i> Obtenir mon pass
+            </button>
+        </nav>
+
+        <section class="hero-section">
+            <div class="hero-badge"><i class="fas fa-calendar-check"></i> 23 Mai 2026 · Lokossa</div>
+            <h1 class="hero-title">FESTY <span>GC</span></h1>
+            <p class="hero-subtitle">Le rendez-vous des étudiants en Génie Civil</p>
+            <div class="hero-meta">
+                <div class="hero-meta-item"><i class="fas fa-map-marker-alt"></i> Restaurant Le Modon, Lokossa</div>
+                <div class="hero-meta-item"><i class="fas fa-clock"></i> 22h00 · Début 23h00</div>
+                <div class="hero-meta-item"><i class="fas fa-music"></i> DJ & Soirée dansante</div>
+            </div>
+        </section>
+
+        <div class="infinite-scroll-container" id="scrollContainer">
+            <div class="infinite-scroll-track" id="scrollTrack"></div>
+        </div>
+
+        <div class="hero-cta-wrap">
+            <button class="hero-cta-large" id="openBilletterieBtnBottom">
+                <i class="fas fa-ticket-alt"></i> Obtenir mon pass · 3000 FCFA
+            </button>
+            <span class="hero-cta-sub"><i class="fas fa-shield-halved"></i> Paiement sécurisé · Ticket envoyé par email</span>
+        </div>
+
+        <section class="content-section">
+            <p class="hero-description">
+                Le FESTY GC rassemble chaque année tous les étudiants en génie civil de l'<strong>INSTI</strong>.
+                Sa thématique : <strong>renforcer les liens</strong> entre étudiants, <strong>favoriser le partage de compétences</strong>,
+                et créer des <strong>opportunités d'emploi et de stage</strong>.
+            </p>
+
+            <h2 class="section-title">Pourquoi <span>participer</span> ?</h2>
+            <div class="section-underline"></div>
+            <div class="features-grid">
+                <div class="feature-card"><div class="feature-icon"><i class="fas fa-handshake"></i></div><h3>Réseautage</h3><p>Rencontrez des aînés qui partageront leurs parcours et expériences.</p></div>
+                <div class="feature-card"><div class="feature-icon"><i class="fas fa-lightbulb"></i></div><h3>Partage de compétences</h3><p>Échangez sur les techniques et innovations en génie civil.</p></div>
+                <div class="feature-card"><div class="feature-icon"><i class="fas fa-graduation-cap"></i></div><h3>Opportunités</h3><p>Découvrez des offres de stage et d'emploi.</p></div>
+                <div class="feature-card"><div class="feature-icon"><i class="fas fa-glass-cheers"></i></div><h3>Ambiance & Détente</h3><p>Buffet gratuit, DJ et soirée jusqu'à 06h00 !</p></div>
+            </div>
+
+            <h2 class="section-title">Programme de la <span>soirée</span></h2>
+            <div class="section-underline"></div>
+            <div class="timeline">
+                <div class="timeline-item"><span class="timeline-time">22H00</span><h4>Accueil & Installation</h4><p>Réception au Restaurant Le Modon.</p></div>
+                <div class="timeline-item"><span class="timeline-time">23H00</span><h4>Talk-Show Interactif</h4><p>Aînés et étudiants partagent leurs parcours.</p></div>
+                <div class="timeline-item"><span class="timeline-time">00H30</span><h4>Concours d'Éloquence</h4><p>Démontrez votre art oratoire !</p></div>
+                <div class="timeline-item"><span class="timeline-time">02H00</span><h4>Soirée DJ & Buffet</h4><p>Danse et buffet jusqu'à 06h00 !</p></div>
+            </div>
+        </section>
+
+        <section class="cta-final-section">
+            <p class="cta-description">Prêt à vivre cette expérience unique ? Rejoignez-nous !</p>
+            <button class="cta-final-btn" id="openBilletterieBtnFinal">
+                <i class="fas fa-ticket-alt"></i> Obtenir mon pass · 3000 FCFA
+            </button>
+        </section>
+
+        <div class="page-footer">FESTY GC 2026 · Événement étudiant · INSTI Lokossa</div>
+    </div>
+
+    <!-- ========== RIDEAU ========== -->
+    <div class="theater-curtain" id="theaterCurtain">
+        <div class="curtain-backdrop"></div>
+        <div class="curtain-rod"></div>
+        <div class="curtain-left" id="curtainLeft"></div>
+        <div class="curtain-right" id="curtainRight"></div>
+        <div class="curtain-logo">FESTY <span>GC</span></div>
+    </div>
+
+    <!-- ========== BILLETTERIE ========== -->
+    <div class="billetterie-page" id="billetteriePage">
+        <div class="page-wrap">
+            <div class="site-header">
+                <a href="#" class="site-logo" id="backToPresentation">FESTY<span>GC</span></a>
+                <div class="site-badge">Billetterie Officielle</div>
+                <button class="back-btn" id="backToPresentationBtn"><i class="fas fa-arrow-left"></i> Retour</button>
+            </div>
+            <div class="main-card">
+                <div class="panel-left">
+                    <div class="event-year">EDITION 2026</div>
+                    <div class="event-title">LOKOSSA</div>
+                    <div class="event-subtitle">FESTY GC</div>
+                    <div class="event-meta">
+                        <div class="event-meta-item"><i class="fas fa-calendar-alt"></i><span>23 Mai 2026</span></div>
+                        <div class="event-meta-item"><i class="fas fa-clock"></i><span>22h00 – 06h00</span></div>
+                        <div class="event-meta-item"><i class="fas fa-map-marker-alt"></i><span>Restaurant Le Modon</span></div>
+                        <div class="event-meta-item"><i class="fas fa-music"></i><span>Salle DJ & Buffet</span></div>
+                        <div class="event-meta-item"><i class="fas fa-microphone"></i><span>Concours d'éloquence</span></div>
+                    </div>
+                    <div class="price-block"><div class="price-label">Prix d'entrée</div><div class="price-amount">3000 <span>FCFA</span></div></div>
+                </div>
+                <div class="panel-right">
+                    <div id="stepForm" class="step">
+                        <div class="step-header"><div class="step-label">Étape 1/2 · Identité</div><div class="step-title">Votre Pass</div></div>
+                        <div class="form-field"><label for="fullName">Nom complet</label><input type="text" id="fullName" placeholder="Ex : DOSSA John"></div>
+                        <div class="form-field"><label for="emailAddress">Adresse email</label><input type="email" id="emailAddress" placeholder="vous@exemple.com"></div>
+                        <button id="validateInfoBtn" class="btn btn-gold"><i class="fas fa-arrow-right"></i> Continuer</button>
+                        <div class="security-row">
+                            <div class="security-badge"><i class="fas fa-circle-check"></i> Paiement sécurisé</div>
+                            <div class="security-badge"><i class="fas fa-circle-check"></i> Ticket unique</div>
+                            <div class="security-badge"><i class="fas fa-circle-check"></i> Reçu par email</div>
+                        </div>
+                    </div>
+                    <div id="stepPayment" class="step hidden">
+                        <div class="step-header"><div class="step-label">Étape 2/2 · Paiement</div><div class="step-title">Confirmer</div></div>
+                        <div class="pay-info-box">
+                            <div class="row"><span class="label">Participant</span><span class="value" id="displayUserName">—</span></div>
+                            <div class="row"><span class="label">Événement</span><span class="value">FESTY GC 2026</span></div>
+                            <div class="row"><span class="label">Date</span><span class="value">23 Mai 2026 · 22h00</span></div>
+                            <div class="row"><span class="label">Lieu</span><span class="value">Restaurant Le Modon</span></div>
+                            <div class="row"><span class="label">Animation</span><span class="value">DJ & Buffet</span></div>
+                            <div class="row"><span class="label">Concours</span><span class="value" style="color:#2ECC71;">Éloquence</span></div>
+                            <div class="divider"></div>
+                            <div class="row"><span class="total-label">Total</span><span class="total-value">3000 FCFA</span></div>
+                        </div>
+                        <button id="payNowBtn" class="btn btn-green"><i class="fas fa-lock"></i> Payer 3000 FCFA</button>
+                        <button id="backToFormBtn" class="btn btn-ghost"><i class="fas fa-chevron-left"></i> Modifier</button>
+                    </div>
+                    <div id="stepTicket" class="step hidden">
+                        <div class="step-header"><div class="step-label">Paiement confirmé</div><div class="step-title">Votre Ticket</div></div>
+                        <div class="ticket-outer" id="ticketOuter">
+                            <div class="ticket-real" id="ticketContainer">
+                                <div class="ticket-left">
+                                    <div class="ticket-title">FESTY GC 2026</div>
+                                    <div class="ticket-subtitle">ENTRÉE UNIQUE · OFFICIEL</div>
+                                    <div class="ticket-holder" id="ticketHolderName">NOM</div>
+                                    <div class="ticket-info-grid">
+                                        <div>Email <strong id="ticketEmail">—</strong></div>
+                                        <div>Date <strong>23 Mai 2026</strong></div>
+                                        <div>Heure <strong>22h00</strong></div>
+                                        <div>Lieu <strong>Restaurant Le Modon</strong></div>
+                                        <div>Tarif <strong>3000 FCFA</strong></div>
+                                        <div>Animation <strong>DJ & Buffet</strong></div>
+                                        <div>Concours <strong style="color:#2ECC71;">Éloquence</strong></div>
+                                    </div>
+                                    <div class="ticket-footer">Présentez ce ticket à l'entrée</div>
+                                </div>
+                                <div class="ticket-right">
+                                    <span class="ticket-barcode-label">CODE</span>
+                                    <canvas id="barcodeCanvas"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ticket-action-row">
+                            <button id="downloadPdfAction" class="btn-outline-gold"><i class="fas fa-file-pdf"></i> PDF</button>
+                            <button id="downloadImgAction" class="btn-outline-gold"><i class="fas fa-image"></i> Image</button>
+                        </div>
+                        <div class="success-note" id="successNote"><i class="fas fa-circle-check"></i> Ticket généré et envoyé.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== CHATBOT ========== -->
+    <div class="chatbot-container" id="chatbotContainer">
+        <div class="chatbot-toggle" id="chatbotToggle">
+            <i class="fas fa-comment-dots"></i>
+        </div>
+        <div class="chatbot-window" id="chatbotWindow">
+            <div class="chatbot-header">
+                <i class="fas fa-robot"></i> Assistant FESTY GC
+            </div>
+            <div class="chatbot-messages" id="chatbotMessages">
+                <div class="chatbot-msg bot">👋 Bonjour ! Je suis l'assistant FESTY GC. Comment puis-je vous aider ?</div>
+            </div>
+            <div class="chatbot-suggestions">
+                <span class="chatbot-suggestion" data-msg="Je n'arrive pas à télécharger mon ticket">📥 Téléchargement</span>
+                <span class="chatbot-suggestion" data-msg="Je ne reçois pas de mail">📧 Email</span>
+                <span class="chatbot-suggestion" data-msg="Paiement refusé">💳 Paiement</span>
+                <span class="chatbot-suggestion" data-msg="Comment ça se passe ?">❓ Infos</span>
+            </div>
+            <div class="chatbot-input-area">
+                <input type="text" id="chatbotInput" placeholder="Votre question...">
+                <button id="chatbotSend"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <div id="loadingOverlay" class="loading-overlay hidden">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Vérification en cours...</div>
+        <div class="loading-progress"><div class="loading-progress-bar"></div></div>
+    </div>
+
+    <script>
+    (function () {
+        var imageUrls = [
+            "https://i.ibb.co/Y4ZTZjLj/IMG-3968.jpg",
+            "https://i.ibb.co/LDZ0GP0r/IMG-3969.jpg",
+            "https://i.ibb.co/tTbVFjNL/IMG-3970.jpg",
+            "https://i.ibb.co/Hfb1DD4p/IMG-3971.jpg"
+        ];
+
+        var track = document.getElementById('scrollTrack');
+        var REPEAT = 4;
+        var all = [];
+        for (var r = 0; r < REPEAT; r++) { imageUrls.forEach(function(u){ all.push(u); }); }
+        all.forEach(function(url){
+            var item = document.createElement('div');
+            item.className = 'scroll-item';
+            var img = document.createElement('img');
+            img.src = url;
+            img.alt = 'FESTY GC';
+            img.loading = 'lazy';
+            img.draggable = false;
+            item.appendChild(img);
+            track.appendChild(item);
+        });
+
+        var container = document.getElementById('scrollContainer');
+        container.addEventListener('mousedown', function(){ container.classList.add('paused'); });
+        container.addEventListener('touchstart', function(){ container.classList.add('paused'); });
+        document.addEventListener('mouseup', function(){ container.classList.remove('paused'); });
+        document.addEventListener('touchend', function(){ container.classList.remove('paused'); });
+
+        /* ========== CHATBOT ========== */
+        var keywords = {
+            "télécharger": "Contactez le service support : festygc24@gmail.com",
+            "ticket": "Contactez le service support : festygc24@gmail.com",
+            "mail": "Contactez le service support : festygc24@gmail.com",
+            "email": "Contactez le service support : festygc24@gmail.com",
+            "reçois": "Contactez le service support : festygc24@gmail.com",
+            "paiement": "Contactez le service support : festygc24@gmail.com",
+            "refusé": "Contactez le service support : festygc24@gmail.com",
+            "payer": "Contactez le service support : festygc24@gmail.com",
+            "comment": "L'événement se déroule le 23 Mai 2026 au Restaurant Le Modon à Lokossa. Au programme : Talk-show, Concours d'éloquence, DJ & Buffet gratuit ! Contact : festygc24@gmail.com",
+            "quand": "L'événement a lieu le 23 Mai 2026 à partir de 22h00 !",
+            "où": "L'événement se tient au Restaurant Le Modon à Lokossa.",
+            "prix": "Le prix d'entrée est de 3000 FCFA.",
+            "heure": "Début à 22h00 jusqu'à 06h00 du matin !"
+        };
+
+        function getBotResponse(msg) {
+            var lower = msg.toLowerCase();
+            for (var key in keywords) {
+                if (lower.indexOf(key) !== -1) return keywords[key];
+            }
+            return "Contactez le service support : festygc24@gmail.com";
+        }
+
+        function addMessage(text, type) {
+            var messages = document.getElementById('chatbotMessages');
+            var div = document.createElement('div');
+            div.className = 'chatbot-msg ' + type;
+            div.textContent = text;
+            messages.appendChild(div);
+            messages.scrollTop = messages.scrollHeight;
+        }
+
+        function sendMessage() {
+            var input = document.getElementById('chatbotInput');
+            var text = input.value.trim();
+            if (!text) return;
+            addMessage(text, 'user');
+            input.value = '';
+            setTimeout(function(){ addMessage(getBotResponse(text), 'bot'); }, 400);
+        }
+
+        document.getElementById('chatbotSend').addEventListener('click', sendMessage);
+        document.getElementById('chatbotInput').addEventListener('keypress', function(e){ if (e.key === 'Enter') sendMessage(); });
+        document.querySelectorAll('.chatbot-suggestion').forEach(function(el){
+            el.addEventListener('click', function(){
+                var msg = this.getAttribute('data-msg');
+                addMessage(msg, 'user');
+                setTimeout(function(){ addMessage(getBotResponse(msg), 'bot'); }, 400);
+            });
+        });
+        document.getElementById('chatbotToggle').addEventListener('click', function(){ document.getElementById('chatbotWindow').classList.toggle('open'); });
+
+        function showChatbot() { document.getElementById('chatbotContainer').classList.add('visible'); }
+        function hideChatbot() { document.getElementById('chatbotContainer').classList.remove('visible'); }
+
+        /* ========== EMAILJS ========== */
+        emailjs.init("EPv4uQ-07o7jvbIDE");
+        var currentName = "", currentEmail = "", currentBarcodeValue = "";
+        var TARIF = 3000, SUPPORT = "festygc24@gmail.com";
+        var DEV_EMAILS = ["jeaneudesavocegamou@gmail.com", "Agbomenougodwill21@gmail.com"];
+        var EVENT_DATE = "23 Mai 2026";
+
+        /* ========== RIDEAU ========== */
+        var curtain = document.getElementById('theaterCurtain'), cLeft = document.getElementById('curtainLeft'), cRight = document.getElementById('curtainRight');
+        var pres = document.getElementById('presentationPage'), bill = document.getElementById('billetteriePage');
+
+        function setCurtainClosed() { cLeft.classList.remove('open'); cRight.classList.remove('open'); }
+        function setCurtainOpen()   { cLeft.classList.add('open');    cRight.classList.add('open');    }
+
+        function openCurtain() {
+            document.querySelectorAll('.nav-cta, .hero-cta-large, .cta-final-btn').forEach(function(b){ b.disabled = true; });
+            curtain.style.display = 'flex';
+            cLeft.style.transition = 'none'; cRight.style.transition = 'none';
+            setCurtainClosed();
+            requestAnimationFrame(function(){
+                requestAnimationFrame(function(){
+                    cLeft.style.transition = ''; cRight.style.transition = '';
+                    setCurtainOpen();
+                    setTimeout(function(){
+                        pres.style.display = 'none';
+                        bill.classList.add('active');
+                        curtain.style.display = 'none';
+                        showChatbot();
+                        document.querySelectorAll('.nav-cta, .hero-cta-large, .cta-final-btn').forEach(function(b){ b.disabled = false; });
+                    }, 950);
+                });
+            });
+        }
+
+        function closeCurtain() {
+            hideChatbot();
+            bill.classList.remove('active');
+            pres.style.display = '';
+            curtain.style.display = 'flex';
+            cLeft.style.transition = 'none'; cRight.style.transition = 'none';
+            setCurtainOpen();
+            requestAnimationFrame(function(){
+                requestAnimationFrame(function(){
+                    cLeft.style.transition = ''; cRight.style.transition = '';
+                    setCurtainClosed();
+                    setTimeout(function(){ curtain.style.display = 'none'; }, 950);
+                });
+            });
+        }
+
+        document.getElementById('openBilletterieBtn').addEventListener('click', openCurtain);
+        document.getElementById('openBilletterieBtnBottom').addEventListener('click', openCurtain);
+        document.getElementById('openBilletterieBtnFinal').addEventListener('click', openCurtain);
+        document.getElementById('backToPresentationBtn').addEventListener('click', closeCurtain);
+        document.getElementById('backToPresentation').addEventListener('click', function(e){ e.preventDefault(); closeCurtain(); });
+
+        /* ========== BILLETTERIE ========== */
+        function loading(ms){
+            ms = ms || 3000;
+            var ov = document.getElementById('loadingOverlay');
+            ov.classList.remove('hidden');
+            return new Promise(function(r){ setTimeout(function(){ ov.classList.add('hidden'); r(); }, ms); });
+        }
+
+        function renderTicket(n, e){
+            currentBarcodeValue = 'FESTY-GC-' + n.toUpperCase().replace(/\s+/g, '-');
+            document.getElementById('ticketHolderName').textContent = n.toUpperCase();
+            document.getElementById('ticketEmail').textContent = e;
+            JsBarcode("#barcodeCanvas", currentBarcodeValue, { format: "CODE128", width: 1.8, height: 45, displayValue: false, margin: 0, background: "transparent", lineColor: "#E8B84B" });
+        }
+
+        function sendEmail(n, e){
+            var code = 'FESTY-GC-' + n.toUpperCase().replace(/\s+/g, '-');
+            return new Promise(function(resolve, reject){
+                var c = document.createElement('canvas');
+                JsBarcode(c, code, { format: "CODE128", width: 2, height: 60, displayValue: false, margin: 10, background: "#fff", lineColor: "#000" });
+                setTimeout(function(){
+                    var b64 = c.toDataURL('image/png');
+                    emailjs.send("service_ljozok4", "template_7nnhdbr", {
+                        to_name: n, to_email: e, name: n, email: e, ticket_code: code,
+                        event: "FESTY GC 2026", lieu: "Restaurant Le Modon, Lokossa",
+                        date: EVENT_DATE, heure: "22h00", type: "DJ & Buffet",
+                        restauration: "Concours d'éloquence", tarif: "3000 FCFA", barcode_image: b64
+                    }).then(resolve).catch(reject);
+                }, 150);
+            });
+        }
+
+        function applyDS(){ document.getElementById('ticketContainer').classList.add('ticket-download'); }
+        function removeDS(){ document.getElementById('ticketContainer').classList.remove('ticket-download'); }
+
+        function downloadPDF(){
+            var btn = document.getElementById('downloadPdfAction');
+            btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i>';
+            applyDS();
+            html2canvas(document.getElementById('ticketOuter'), { scale: 2, useCORS: true, backgroundColor: null, allowTaint: true })
+                .then(function(canvas){
+                    removeDS();
+                    var iw = canvas.width, ih = canvas.height, ratio = ih / iw, pw = 210, ph = pw * ratio;
+                    var pdf = new jspdf.jsPDF({ orientation: 'portrait', unit: 'mm', format: [ph, pw] });
+                    pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, pw, ph);
+                    pdf.save(currentBarcodeValue + '.pdf');
+                })
+                .catch(function(){ removeDS(); alert("Erreur PDF"); })
+                .finally(function(){ btn.disabled = false; btn.innerHTML = '<i class="fas fa-file-pdf"></i> PDF'; });
+        }
+
+        function downloadIMG(){
+            var btn = document.getElementById('downloadImgAction');
+            btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i>';
+            applyDS();
+            html2canvas(document.getElementById('ticketOuter'), { scale: 2, useCORS: true, backgroundColor: null, allowTaint: true })
+                .then(function(canvas){
+                    removeDS();
+                    var a = document.createElement('a');
+                    a.download = currentBarcodeValue + '.png';
+                    a.href = canvas.toDataURL('image/png');
+                    a.click();
+                })
+                .catch(function(){ removeDS(); alert("Erreur image"); })
+                .finally(function(){ btn.disabled = false; btn.innerHTML = '<i class="fas fa-image"></i> Image'; });
+        }
+
+        function success(){
+            renderTicket(currentName, currentEmail);
+            document.getElementById("stepPayment").classList.add("hidden");
+            document.getElementById("stepTicket").classList.remove("hidden");
+            sendEmail(currentName, currentEmail)
+                .then(function(){ document.getElementById('successNote').innerHTML = '<i class="fas fa-circle-check"></i> Ticket envoyé par email.'; })
+                .catch(function(){ document.getElementById('successNote').innerHTML = '<i class="fas fa-exclamation-triangle"></i> Ticket affiché (email non envoyé).'; });
+        }
+
+        function fail(msg){
+            var btn = document.getElementById('payNowBtn');
+            btn.disabled = false; btn.innerHTML = '<i class="fas fa-lock"></i> Payer ' + TARIF + ' FCFA';
+            var existing = document.querySelector('.error-note');
+            if (existing) existing.remove();
+            var d = document.createElement('div');
+            d.className = 'error-note';
+            d.innerHTML = '<div><i class="fas fa-exclamation-triangle"></i> ' + msg + '</div><div class="error-support">Support : <a href="mailto:' + SUPPORT + '">' + SUPPORT + '</a></div>';
+            btn.parentNode.insertBefore(d, btn.nextSibling);
+        }
+
+        function isDev(email){ return DEV_EMAILS.indexOf(email.toLowerCase()) !== -1; }
+
+        document.getElementById("validateInfoBtn").addEventListener("click", async function(){
+            var n = document.getElementById("fullName").value.trim();
+            var e = document.getElementById("emailAddress").value.trim();
+            if (!n) return alert("Veuillez saisir votre nom complet.");
+            if (!e || !e.includes("@")) return alert("Veuillez saisir un email valide.");
+            currentName = n; currentEmail = e;
+            document.getElementById("displayUserName").textContent = n;
+            var btn = this;
+            btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i>';
+            await loading(3000);
+            btn.disabled = false; btn.innerHTML = '<i class="fas fa-arrow-right"></i> Continuer';
+            if (isDev(currentEmail)) {
+                document.getElementById("stepForm").classList.add("hidden");
+                success();
+            } else {
+                document.getElementById("stepForm").classList.add("hidden");
+                document.getElementById("stepPayment").classList.remove("hidden");
+            }
+        });
+
+        document.getElementById("backToFormBtn").addEventListener("click", function(){
+            document.getElementById("stepForm").classList.remove("hidden");
+            document.getElementById("stepPayment").classList.add("hidden");
+            document.getElementById("stepTicket").classList.add("hidden");
+        });
+
+        document.getElementById("payNowBtn").addEventListener("click", function(){
+            var btn = this;
+            if (!currentName || !currentEmail) return;
+            if (typeof FedaPay === 'undefined') return fail("Service de paiement indisponible. Réessayez.");
+            btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i>';
+            try {
+                FedaPay.init({
+                    public_key: 'pk_live_PnaLjnojFALVQz_SK7w_VZZW',
+                    transaction: { amount: TARIF, description: 'Ticket FESTY GC — ' + currentName },
+                    customer: { email: currentEmail, lastname: currentName },
+                    onComplete: function(r){
+                        if (r && (r.reason === "approved" || (r.transaction && r.transaction.status === "approved"))) {
+                            success();
+                        } else {
+                            fail("Paiement non confirmé. Veuillez réessayer.");
+                        }
+                    },
+                    onError: function(){ fail("Erreur technique lors du paiement."); }
+                }).open();
+            } catch (err) {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-lock"></i> Payer ' + TARIF + ' FCFA';
+                fail("Impossible d'ouvrir le module de paiement.");
+            }
+        });
+
+        document.getElementById("downloadPdfAction").addEventListener("click", downloadPDF);
+        document.getElementById("downloadImgAction").addEventListener("click", downloadIMG);
+    })();
+    </script>
+
+</body>
+</html>
